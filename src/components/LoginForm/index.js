@@ -17,15 +17,17 @@ class LoginForm extends Component {
     this.setState({username: event.target.value})
   }
 
+  onChangePassword = event => {
     this.setState({password: event.target.value})
   }
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
-    Cookies.set('jet_token', jwtToken, {
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
-    })    history.replace('/')
+    })
+
+    history.replace('/')
   }
 
   onSubmitFailure = errorMsg => {
